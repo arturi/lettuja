@@ -1,0 +1,44 @@
+{
+  "siteURL":"http://example.com",
+  "tempUploads":"./uploads",
+  "srcStaticDir":"./static",
+  "contentDirectory":"./content",
+  "contentFileExtension": "md",
+  "outputDirectory":"./example.com",
+  "templateDirectory":"./views/classic",
+  "outputMediaDirectory":"./example.com/media",
+  "imageSize":1400,
+  "languages":["ru", "en"],
+  "postsOnIndex": 15,
+  "postsOnFeed": 20,
+  "adminCredentials": {
+    "sessionSecret": "secret",
+    "password": "pass"
+  },
+  "strings": {
+    "ru": {
+      "siteURL":"http://example.com/ru",
+      "authorName":"Джон Смит",
+      "authorEmail":"john@example.com",
+      "siteTitle":"Сайт Джона Смита",
+      "blogTitle":"Блог Джона Смита",
+      "blog":"Блог",
+      "archive":"Архив блога Джона Смита",
+      "readmore":"Читать",
+      "twitter":"@example"
+      },
+      "en": {
+          "siteURL":"http://example.com/en",
+          "authorName":"John Smith",
+          "authorEmail":"john@example.com",
+          "siteTitle":"John Smith′s site",
+          "blogTitle":"John Smith′s Blog",
+          "blog":"Blog",
+          "archive":"John Smith′s Blog Archive",
+          "readmore":"Read",
+          "twitter":"@example"
+        }
+      },
+  "unforgivableFileNames": ["archive", "admin", "blog", "feed", "drafts", "ru", "en"],
+  "cutString":"<!--more-->"
+}

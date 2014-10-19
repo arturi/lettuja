@@ -1,0 +1,18 @@
+{{>header}}
+<header class="title-nav row-1">
+  <h1><a href="{{langPath}}">{{strings.authorName}}</a> <span class="title-nav-slash">/</span> <a href="{{langPath}}blog">{{strings.blog}}</a></h1>
+</header>
+
+<section class="entry-list row-1">
+  {{#each posts}}
+  <article class="entry">
+    <header class="entry-header">
+      <h1 class="entry-title"><a href="{{relativeLink}}">{{{title}}}</a></h1>
+      {{#if subtitle}}<h2 class="entry-subtitle"><a href="{{relativeLink}}">{{subtitle}}</a></h2>{{/if}}
+      {{#if cover}}<a href="{{relativeLink}}"><img src="{{cover}}" class="entry-cover"></a>{{/if}}
+    </header>
+  </article>
+  {{/each}}
+  <a href="{{langPath}}archive" class="archive-link">→</a>
+</section>
+{{>footer}}

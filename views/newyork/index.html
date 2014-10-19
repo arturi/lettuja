@@ -1,0 +1,13 @@
+{{>header}}
+    <header class="title-nav row-2">
+        <h1>{{strings.authorName}}</h1>
+    </header>
+
+    <section class="about row-2">
+      {{#post}}
+        <div class="content-area">
+            {{{body}}}
+        </div>
+      {{/post}}
+    </section>
+{{>footer}}

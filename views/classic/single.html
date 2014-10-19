@@ -1,0 +1,25 @@
+{{>header}}
+<header class="row-1">
+  <nav class="title-nav" role="navigation">
+    <h1 class="title-nav-header"><a href="/">{{strings.authorName}}</a> <span class="title-nav-slash">/</span> <a href="{{langPath}}blog/">{{strings.blog}}</a></h1>
+  </nav>
+</header>
+
+<section class="single-entry row-1" role="main">
+  {{#post}}
+  <article class="entry">
+    <header class="entry-header">
+      <h1 class="entry-title">{{{title}}}</h1>
+    </header>
+
+    <div class="entry-body content-area">
+      {{{body}}}
+    </div>
+
+    <footer class="entry-footer">
+      <time class="entry-timestamp">{{stringDate}}</time>
+    </footer>
+  </article>
+  {{/post}}
+</section>
+{{>footer}}

@@ -1,0 +1,37 @@
+{
+  "name": "lettuja-node",
+  "version": "3.4.1",
+  "description": "Simple static document generator",
+  "main": "./lib/index.js",
+  "dependencies": {
+    "async": "^0.2.10",
+    "body-parser": "^1.4.3",
+    "chokidar": "^0.8.2",
+    "compression": "^1.0.9",
+    "concurrent-transform": "^1.0.0",
+    "express": "^4.5.1",
+    "express-session": "^1.7.2",
+    "fs-extra": "^0.10.0",
+    "glob": "^4.0.3",
+    "gm": "^1.16.0",
+    "gulp": "^3.8.0",
+    "gulp-changed": "^0.4.0",
+    "gulp-livereload": "^2.1.0",
+    "gulp-util": "^2.2.19",
+    "handlebars": "^2.0.0",
+    "hbs": "^2.7.0",
+    "marked": "^0.3.2",
+    "moment": "^2.2.1",
+    "multer": "^0.1.0",
+    "richtypo": "~0.1.6"
+  },
+  "scripts": {
+    "start": "./lib/index.js"
+  },
+  "author": "Artur Paikin",
+  "license": "BSD",
+  "devDependencies": {},
+  "jshintConfig": {
+    "node": true
+  }
+}

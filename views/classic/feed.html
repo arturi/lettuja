@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>{{strings.blogTitle}}</title>
+  <link href="{{strings.siteURL}}/blog-feed.xml" rel="self"/>
+  <link href="{{strings.siteURL}}/"/>
+  <updated>{{updated}}</updated>
+  <id>{{strings.siteURL}}/</id>
+  <author>
+    <name>{{strings.authorName}}</name>
+    <email>{{strings.authorEmail}}</email>
+  </author>
+
+  {{#each posts}}
+    <entry>
+      <title>{{rawTitle}}</title>
+      <link type="text/html" rel="alternate" href="{{absoluteLink}}"/>
+      <updated>{{pubDate}}</updated>
+      <id>{{absoluteLink}}</id>
+      <content type="html">
+        {{body}}
+      </content>
+    </entry>
+  {{/each}}
+</feed>

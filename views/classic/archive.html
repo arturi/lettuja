@@ -1,0 +1,15 @@
+{{>header}}
+<header class="row-1">
+  <nav class="title-nav" role="navigation">
+    <h1 class="title-nav-header"><a href="/">{{strings.authorName}}</a> <span class="title-nav-slash">/</span> <a href="{{langPath}}blog/">{{strings.blog}}</a></h1>
+  </nav>
+</header>
+
+<section class="archive row-1">
+  {{#each posts}}
+  <ul class="archive-list content-area">
+    <li><time class="entry-timestamp">{{stringDate}}</time><br><a href="{{relativeLink}}">{{{title}}}</a></li>
+  </ul>
+  {{/each}}
+</section>
+{{>footer}}
