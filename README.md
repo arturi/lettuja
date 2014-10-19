@@ -11,6 +11,16 @@ A static site and blog generator written in Node.js. It takes Markdown ```.md```
 * Github-flavored Markdown
 * Blazing fast
 
+## Post Format
+
+```
+Title: Hello, World
+Date: 2014-09-17 16:40
+Cover: cover-image.jpg
+
+Hi. Here is my post.
+```
+
 ## Usage
 
 1. Update everything in ```config.json```: set up passwords, strings and URLs.
