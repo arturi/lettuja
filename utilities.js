@@ -1,5 +1,7 @@
 'use strict';
-// var marked = require('marked');
+
+var config = require('./config.json');
+var path = require('path');
 
 // Split any string into two by delimiter
 function splitTwo(string, delimeter) {
@@ -35,6 +37,29 @@ function findTraverse(data, match) {
   return false;
 }
 
+function isFilePathCorrect(filePath) {
+  var fileExtension = path.extname(filePath).substr(1);
+  if (fileExtension === config.contentFileExtension) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function isNewOrModifiedItem(oldCollection, newCollectionItem) {
+  if (!findTraverse(oldCollection, newCollectionItem.slug)) {
+    return true;
+  }
+
+  for (var i = 0; i < oldCollection.length; i++) { 
+    if (newCollectionItem.slug === oldCollection[i].slug && newCollectionItem.lastModified !== oldCollection[i].lastModified) {
+      return true;
+    }
+    return false;
+  }
+
+}
+
 function fixMarkdown(marked) {
   // Prevent Marked markdown parser from removing non-breaking characters
   marked.Lexer.prototype.lex = function (src) {
@@ -56,3 +81,5 @@ module.exports.splitTwo = splitTwo;
 module.exports.sortByDate = sortByDate;
 module.exports.findTraverse = findTraverse;
 module.exports.fixMarkdown = fixMarkdown;
+module.exports.isFilePathCorrect = isFilePathCorrect;
+module.exports.isNewOrModifiedItem = isNewOrModifiedItem;

@@ -1,0 +1,23 @@
+{
+	"russian": {
+		"src": "./content/ru",
+		"outDir": "./example.com",
+		"outPath": "/ru",
+		"views": "./views/classic",
+		"lang": "ru"
+	},
+	"english": {
+		"src": "./content/en",
+		"outDir": "./example.com",
+		"outPath": "/en",
+		"views": "./views/classic",
+		"lang": "en"
+	},
+	"main": {
+		"src": "./content/main",
+		"outDir": "./example.com",
+		"outPath": "/",
+		"views": "./views/classic",
+		"lang": "en"
+	}
+}
