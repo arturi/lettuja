@@ -1,0 +1,158 @@
+<section class="file-upload">
+  <h2>File & Media Upload</h2>
+  
+  <div class="upload-block">
+    <form enctype="multipart/form-data" action="/admin/upload" class="form-upload js-form-upload">
+      <fieldset class="inline-field meta-field">
+        <label for="imgSize" class="label">Image Size</label>
+        <input name="imgSize" type="number" class="text-input" value="{{defaultImageSize}}">
+      </fieldset>
+      
+      <fieldset class="inline-field meta-field">
+        <label for="folder" class="label">Folder</label>
+        <input name="folder" type="text" class="text-input" value="{{date}}">
+      </fieldset>
+
+      <input name="files" type="file" multiple>
+      <div class="dropZone">Drop files here or click to select</div>
+    </form>
+  </div>
+  
+  <div class="result-block">
+    <!-- <h4 class="label">Uploaded Images</h4> -->
+    <ul class="uploaded-items"></ul>
+  </div>
+
+</section>
+
+<!-- <section class="group">
+  <h2>Site</h2>
+  <input type="button" value="Generate" class="btn generate-btn">
+</section> -->
+
+<!-- <section class="group">
+  <h2>Logout</h2>
+  <a href="/logout">Logout</a>
+</section> -->
+
+<!-- <textarea style="width:100%; height: 300px;" id="text"></textarea> -->
+
+<script src="/admin/jquery-2.1.1.min.js"></script>
+
+<script>
+  $(function() {
+
+    // Drop Zone
+    var $dropZone = $('.dropZone');
+    var $imageUpload = $('.js-form-upload');
+
+    $dropZone.on('dragenter', function (e) {
+      e.stopPropagation();
+      e.preventDefault();
+      $(this).addClass('is-dragover');
+    });
+
+    $dropZone.on('dragover', function (e) {
+      e.stopPropagation();
+      e.preventDefault();
+    });
+
+    $dropZone.on('drop', function (e) {
+      e.preventDefault();
+      var files = e.originalEvent.dataTransfer.files;
+      handleFileUploadFromDrag(files);
+      $(this).removeClass('is-dragover');
+    });
+
+    $(document).on('dragenter dragover drop', function (e) {
+      e.stopPropagation();
+      e.preventDefault();
+    });
+
+    function handleFileUploadFromDrag (files) {
+      var formData = new FormData($imageUpload[0]);
+      for (var i = 0; i < files.length; i++) {
+        formData.append('files', files[i]);
+      }
+      sendToServer(formData);
+    }
+
+    function handleFileUploadInput () {
+      var formData = new FormData($imageUpload[0]);
+      sendToServer(formData);
+    }
+
+    function sendToServer(formData) {
+      var uploadURL = $imageUpload.attr('action');
+      var jqXHR = $.ajax({
+        url: uploadURL,
+        type: 'POST',
+        contentType: false,
+        processData: false,
+        cache: false,
+        data: formData,
+        success: function(res) {
+          console.log(res);  
+          clearInput();
+          showUploaded(res);
+        }
+      }); 
+    }
+
+    function showUploaded(filePaths) {
+      filePaths.forEach(function(path) {
+        var img = document.createElement('img');
+        img.setAttribute('src', path);
+        img.style.width = '300px';
+        var listItem = document.createElement('li');
+        var markdownImgPath = '<p>![image](' + path + ')' + '</p>';
+        $(listItem)
+          .append(markdownImgPath)
+          .append(img);
+        $('.uploaded-items').prepend(listItem);
+        
+        // var cursorPosStart = $('#text').prop('selectionStart');
+        // var cursorPosEnd = $('#text').prop('selectionEnd');
+        // var v = $('#text').val();
+        // var textBefore = v.substring(0, cursorPosStart);
+        // var textAfter = v.substring(cursorPosEnd, v.length);
+        // $('#text').val(textBefore + markdownImgPath + textAfter);
+
+        // $('#text').prop('selectionStart', cursorPosEnd + markdownImgPath.length);
+        // $('#text').prop('selectionEnd', cursorPosEnd + markdownImgPath.length);
+      });
+    }
+
+    function clearInput() {
+      var $input = $('.file-upload');
+      $input.replaceWith($input.val('').clone(true));
+    }
+
+    $fileInput = $('input[name="files"]');
+    $fileInput.hide();
+    $dropZone.click(function (e) {
+      $fileInput.click();
+    });
+
+    $fileInput.change(function () {
+      handleFileUploadFromInput();
+    });
+
+    // $('.generate-btn').click(function() {
+    //   var formData = new FormData($('#generator')[0]);
+    //   $.ajax({
+    //     url: '/generate',
+    //     type: 'POST',
+    //     success: function(response) {
+    //       console.log(response);
+    //     },
+    //     data: formData,
+    //     cache: false,
+    //     contentType: false,
+    //     processData: false
+    //   }, 'json');
+    // });
+
+  });
+
+  </script>
