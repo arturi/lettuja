@@ -5,7 +5,7 @@ A static site and blog generator written in Node.js. It takes Markdown ```.md```
 
 ## Features
 
-* Supports multiple languages: ```content/ru```, ```content/en```, ```content/fi``` and so on. Update language strigs at ```config.json```
+* Supports multiple languages or environments — each with its own language and settings: ```content/ru```, ```content/en```, ```content/fi```, `content/main` and so on. Update i18n strings at ```config.json```
 *  Supports post drafts, use ```type: draft``` in the post header and look for the draft at ```http://example.com/ru/drafts/your-draft-post```
 * Image uploads and automatic resizing
 * Github-flavored Markdown
@@ -23,6 +23,6 @@ Hi. Here is my post.
 
 ## Usage
 
-1. Update everything in ```config.json```: set up passwords, strings and URLs.
+1. Update everything in ```config.json```: setup passwords, strings and URLs.
 2. Run the app with ```node lib/index.js``` or use [PM2](https://github.com/Unitech/pm2).
 3. Every time Lettuja detects a file change it will generate your site. To upload images, head to ```http://example.com/admin```
