@@ -14,9 +14,11 @@ A static site and blog generator written in Node.js. It takes Markdown ```.md```
 ## Post Format
 
 ```
-Title: Hello, World
+---
+Title: "Hello, World"
 Date: 2014-09-17 16:40
-Cover: cover-image.jpg
+Cover: "cover-image.jpg"
+---
 
 Hi. Here is my post.
 ```
