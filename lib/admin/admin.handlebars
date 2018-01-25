@@ -1,13 +1,13 @@
 <section class="file-upload">
   <h2>File & Media Upload</h2>
-  
+
   <div class="upload-block">
     <form enctype="multipart/form-data" action="/admin/upload" class="form-upload js-form-upload">
       <fieldset class="inline-field meta-field">
         <label for="imgSize" class="label">Image Size</label>
         <input name="imgSize" type="number" class="text-input" value="{{defaultImageSize}}">
       </fieldset>
-      
+
       <fieldset class="inline-field meta-field">
         <label for="folder" class="label">Folder</label>
         <input name="folder" type="text" class="text-input" value="{{date}}">
@@ -17,7 +17,7 @@
       <div class="dropZone">Drop files here or click to select</div>
     </form>
   </div>
-  
+
   <div class="result-block">
     <!-- <h4 class="label">Uploaded Images</h4> -->
     <ul class="uploaded-items"></ul>
@@ -77,8 +77,9 @@
       sendToServer(formData);
     }
 
-    function handleFileUploadInput () {
+    function handleFileUploadFromInput () {
       var formData = new FormData($imageUpload[0]);
+      console.log(formData);
       sendToServer(formData);
     }
 
@@ -92,11 +93,11 @@
         cache: false,
         data: formData,
         success: function(res) {
-          console.log(res);  
+          console.log(res);
           clearInput();
           showUploaded(res);
         }
-      }); 
+      });
     }
 
     function showUploaded(filePaths) {
@@ -110,7 +111,7 @@
           .append(markdownImgPath)
           .append(img);
         $('.uploaded-items').prepend(listItem);
-        
+
         // var cursorPosStart = $('#text').prop('selectionStart');
         // var cursorPosEnd = $('#text').prop('selectionEnd');
         // var v = $('#text').val();
